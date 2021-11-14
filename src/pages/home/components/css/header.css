@@ -1,0 +1,33 @@
+.header{
+    background-color: #1f2235;
+    color: #ffffff;
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 100px;
+    padding-bottom: 10px;
+}
+.home-nav{
+    /* margin-top: -10px; */
+    font-weight: 700;
+}
+.app-name{
+    font-weight: 700;
+    font-size: 17px;
+}
+.text-h{
+    font-size: 30px;
+    color: #C84C5B;
+    margin-right: 0px;
+}
+.text-t{
+    color: #C84C5B;
+    
+}
+@media screen and (max-width:768px){
+    .header{
+        padding-right:30px;
+    }
+    .fa-bars{
+        margin-top:20px;
+    }
+}

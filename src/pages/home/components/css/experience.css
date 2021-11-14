@@ -1,0 +1,16 @@
+.project-img{
+    height: inherit;
+    width: 100%;
+}
+.project-col{
+    height: 400px;
+    margin-bottom: 20px;
+}
+.project-grid{
+    margin-top: 40px;
+}
+.experience{
+    background-color: #23263A;
+    padding: 20px;
+    margin-top: 40px;
+}

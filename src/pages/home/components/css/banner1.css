@@ -1,0 +1,93 @@
+.banner1-wrapper{
+   background-color: #23263A;
+   padding-top: 100px;
+}
+
+.banner1-wrapper{
+    height: 100vh;   
+}
+#banner1-text{
+    padding-left: 100px; 
+    padding-right: 20px;
+    color: white;
+}
+.bold-text{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 30px;
+    /* letter-spacing: 2px; */
+}
+.fab-icons{
+    color: white;
+}
+.light-text{
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 30px;
+    margin-top: 20px;
+}
+.banner-action-btns{
+    margin-top: 30px;
+}
+.btn-myportfolio{
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 20px;
+    border: 3px solid #C84C5B;
+    color: white;
+    background-color: inherit;
+    font-size: 12px;
+}
+.btn-play{
+    border: 3px solid #C84C5B;
+    background-color: #C84C5B;
+    
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+}
+.my-img{
+    height: 400px;
+    width: 400px;
+    margin-top: 0px;
+    border-radius:50%;
+}
+.lang-icon{
+    width: 40px;
+    height: 40px;
+    
+    margin-right: 10px;
+}
+.icon-box{
+    margin-top: 60px;
+}
+.fab{
+
+}
+
+.hideOnDesktop{
+    display:none;
+}
+.hideOnMobile{
+    display:block;
+}
+
+
+@media screen and (max-width:768px){
+    .hideOnMobile{
+        display:none;
+    }
+    .hideOnDesktop{
+        display:block;
+    }
+    #banner1-text{
+        padding-left:30px;
+    }
+    .bold-text{
+        font-size:30px;
+    }
+}
