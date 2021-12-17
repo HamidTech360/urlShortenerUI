@@ -1,15 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import Banner1 from './components/banner1'
-import Header from './components/header'
-import Services from './components/our-services'
+import Banner from './components/banner'
+import OurService from './components/ourservice'
 import Cards from './components/cards'
-import AboutMe from './components/aboutme'
-import Experience from './components/experience'
-import ProjectCards from './components/proj-cards'
-import Footer from './components/footer'
-import ReactLoading from 'react-loading'
-
-
+import Banner2 from './components/banner2'
 
 import './components/css/home.css'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -40,15 +33,10 @@ const Home = ()=>{
 
     return(
         <div className="home-wrapper">
-          
-            <Header/>
-            <Banner1/>
-            <Services/> 
+            <Banner/>
+            <OurService/>
             <Cards/>
-            <AboutMe/>
-            <Experience/>
-            <Footer/>
-            {/* <ProjectCards/> */}
+            <Banner2/>
         </div>
     
     )}

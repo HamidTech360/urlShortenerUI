@@ -1,29 +1,33 @@
 import React from 'react'
 import Card from './card';
-import Card2 from './card2';
-import Fade from 'react-reveal'
+import './css/card.css'
 
-import './css/cards.css'
 const Cards = () => {
-    const  frontendskills =[
-        ['HTML','CSS', 'Javascript'],
-        ['React', 'JQuery'],
-        ['Bootstrap', 'MaterialUI', 'Tailwind and more awesome design dependencies']
-    ]
     return ( 
-        <div className="cards">
-            <div className="row card-grid">
-               <Fade duration={1000} bottom>
-                    <div className="col-lg-4 col-md-4 col-sm-12-col-xs-12 card-col">
-                            <Card skills={frontendskills} />
-                    </div>
-               </Fade>
-               <Fade duration={1000} bottom>
-                <div className="col-lg-4 col-md-4 col-sm-12-col-xs-12 card-col">
-                        <Card2/>
-                    </div>
-               </Fade>
-               
+        <div className="cards row">
+            <div className="col-lg-4 col-md-5 col-sm-12 col-xs-12 card-box">
+                <Card 
+                    img="copywriting.png" 
+                    header="Copy Writing" 
+                    details=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero ab iusto
+                            reiciendis possimus debitis modi sit omnis facilis iste praesentium."
+                 />
+            </div>
+            <div className="col-lg-4 col-md-5 col-sm-12 col-xs-12 card-box">
+                <Card 
+                        img="seo.png" 
+                        header="SEO OptimiZation" 
+                        details=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero ab iusto
+                                reiciendis possimus debitis modi sit omnis facilis iste praesentium."
+                    />
+            </div>
+            <div className="col-lg-4 col-md-5 col-sm-12 col-xs-12 card-box">
+                <Card 
+                        img="email-mktng.png" 
+                        header="Email Marketing" 
+                        details=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero ab iusto
+                                reiciendis possimus debitis modi sit omnis facilis iste praesentium."
+                    />
             </div>
         </div>
      );
