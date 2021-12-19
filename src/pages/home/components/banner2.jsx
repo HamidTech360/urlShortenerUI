@@ -1,4 +1,4 @@
-import react from 'react'
+import React from 'react'
 import './css/banner2.css'
 const Banner2 = () => {
     return ( 

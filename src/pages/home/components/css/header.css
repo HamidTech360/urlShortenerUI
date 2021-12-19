@@ -14,6 +14,10 @@
     color: #3A3A5E;
     letter-spacing: 2px;
 }
+.NavBar-item{
+    font-size: 15px;
+    font-weight: 600;
+}
 .colored-i{
     color: #FB9C23;
     font-weight: 900;

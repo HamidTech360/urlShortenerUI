@@ -1,8 +1,7 @@
 .banner1{
-    background-color: #F8F8F8;
-    min-height: 100vh;
+    /* background-color: #F8F8F8; */
+   
     padding-left: 80px;
-
 
 }
 .small-colored{
@@ -11,7 +10,7 @@
     font-weight: 600;
     font-size: 18px;
     margin-bottom: 10px;
-    letter-spacing: 2px;
+    /* letter-spacing: 2px; */
 }
 .big-bold{
     color: #3A3A5E;
@@ -64,19 +63,29 @@
 
 @media screen and (max-width:768px) {
     .small-colored{
-        margin-top: 60px;
+        margin-top: 45px;
+        letter-spacing: 0px;
+        font-size: 14px;
     }
     .banner1{
-        padding-left: 30px;
+       padding-left: 20px;
+       padding-right: 20px;
+       background-color: #F8F8F8;
+    }
+    .banner-grid{
+        text-align: center;
+
     }
     .big-bold{
-        width: fit-content;
-        font-size: 35px;
+        width: 100%;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 38px;
     }
     .banner1-img{
         height: 300px;
         width: 400px;
-        margin-top: 50px;
+        margin-top: 0px;
     }
     
 }

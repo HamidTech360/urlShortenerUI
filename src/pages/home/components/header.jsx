@@ -76,9 +76,9 @@ const Header = () => {
         >
           <List>
                 {NavOptions.map((item, index) => (
-                    <div className="NavBar-item" key={index} style={{backgroundColor:item.isActive?'rgba(255, 255, 255, 0.15)':'', paddingLeft:'50px'}}>
+                    <div className="NavBar-item" key={index} style={{backgroundColor:item.isActive?'rgba(255, 255, 255, 0.15)':'', paddingLeft:'50px', marginBottom:'30px'}}>
                       <Link to={item.link} style={{textDecoration:'none', color:'lightgrey'}}>
-                      <span className="NavBar-item-item-icon"> <i className={`fa ${item.icon} fa-1x`}></i> </span>
+                        <span className="NavBar-item-item-icon"> <i className={`fa ${item.icon} fa-1x`}></i> </span>
                          <span className="NavBar-item-item-text">{item.name}</span>
                       </Link>
                     </div>
@@ -103,12 +103,12 @@ const Header = () => {
                {list()}
           </SwipeableDrawer>
             {/* <img src="../../../assets/icopy.jpg" alt="logo" className="logo-img" /> */}
-            <span className="app-name"> <span className="colored-i">i</span>copy</span>
+            <span className="app-name"> <span className="colored-i">i</span>copy Story</span>
             <span className="pull-right">
                 <span className="hideOnMobile">
                     <ul className="nav ">
                         {NavOptions.map((el, i)=>
-                          <Link to={el.link} style={{textDecoration:'none'}}>
+                          <Link key={i} to={el.link} style={{textDecoration:'none'}}>
                                <li className="nav-item">{el.name}</li>
                          </Link> 
                         )}

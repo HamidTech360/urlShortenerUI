@@ -1,21 +1,22 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import Banner from './components/banner'
 import OurService from './components/ourservice'
 import Cards from './components/cards'
 import Banner2 from './components/banner2'
-
+import Portfolio from './components/portfolio'
+import ContactMe from './components/contactMe'
 import './components/css/home.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'font-awesome/css/font-awesome.css'
 const Home = ()=>{
-    const [preloader, setPreloader] = useState(true)
+    // const [preloader, setPreloader] = useState(true)
    
-    useEffect(()=>{
+    // useEffect(()=>{
         
-        setTimeout(() => {
-            setPreloader(false)
-        }, 200);
-    },[])
+    //     setTimeout(() => {
+    //         setPreloader(false)
+    //     }, 200);
+    // },[])
 
     // if(preloader){
     //     return (
@@ -37,6 +38,8 @@ const Home = ()=>{
             <OurService/>
             <Cards/>
             <Banner2/>
+            <Portfolio/>
+            <ContactMe/>
         </div>
     
     )}

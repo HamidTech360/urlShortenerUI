@@ -12,7 +12,7 @@ const Banner = () => {
                     <div className="big-bold">Rank Your Buisness With Copy Writing</div>
                     <div className="small-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, et ratione?
-                         Fuga minus perferendis aperiam possimus atque, ad mollitia iste
+                         
                     </div>
                     <div className="banner-btns">
                         <button className=" get-started-btn ">Get Started</button>
