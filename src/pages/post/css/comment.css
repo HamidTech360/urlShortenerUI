@@ -1,0 +1,31 @@
+.comment{
+    margin-top: 30px;
+}
+.comment-title{
+    font-size: 25px;
+    font-weight: 600;
+    color: #3A3A5E;
+    margin-bottom: 20px;
+}
+.comment-tab{
+    margin-bottom: 30px;
+}
+.comment-name{
+    
+    font-weight: 500;
+    font-size: 15px;
+
+}
+.comment-date{
+    color: grey;
+    font-weight: 500;
+    font-size: 13px;
+    margin-top: 10px;
+}
+.comment-text{
+    color: #3A3A5E;
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 10px;
+    
+}
