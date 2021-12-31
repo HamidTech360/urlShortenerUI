@@ -1,4 +1,4 @@
-import react from 'react'
+import React from 'react'
 import '../css/new-comment.css'
 
 const NewComment = ()=>{

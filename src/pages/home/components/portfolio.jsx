@@ -88,7 +88,7 @@ export default function Portfolio() {
         <div className="proj-cards row">
             {(filtered.length===0?data:filtered).map((item, i)=>
                 <div key={i} className="col-lg-3 col-md-3 col-sm-12 col-xs-12 proj-card">
-                <img src={`../../../assets/${item.image}`} className="proj-img" alt="display photo"  />
+                <img src={`../../../assets/${item.image}`} className="proj-img" alt="display"  />
                 <div className="proj-card-texts">
                     <div className="textIcons">
                         <span className="text-icon">

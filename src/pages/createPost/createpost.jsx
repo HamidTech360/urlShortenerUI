@@ -6,7 +6,7 @@ import './css/createpost.css'
 
 const CreatePost = ()=>{
     const[errorMsg, setErrorMsg] = useState(null)
-    const [successMsg, setSuccessMsg] = useState(false)
+    // const [successMsg, setSuccessMsg] = useState(false)
     const [data, setdata] = useState({
         title:'',
         post:'',
