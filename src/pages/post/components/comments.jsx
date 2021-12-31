@@ -4,7 +4,7 @@ import '../css/comment.css'
 const Comment =()=>{
     return (
         <div className="comment">
-            <div className="comment-title">5 Comments</div>
+            
             <div className="comment-tab">
                 <div className="comment-name">Hamid</div>
                 <div className="comment-date">25th july, 2022</div>

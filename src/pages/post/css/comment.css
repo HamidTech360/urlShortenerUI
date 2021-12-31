@@ -1,11 +1,12 @@
 .comment{
-    margin-top: 30px;
+    margin-top: 0px;
 }
 .comment-title{
     font-size: 25px;
     font-weight: 600;
     color: #3A3A5E;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 .comment-tab{
     margin-bottom: 30px;
@@ -25,7 +26,7 @@
 .comment-text{
     color: #3A3A5E;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 10px;
     
 }

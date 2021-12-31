@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { Fab } from '@material-ui/core';
+// import { Fab } from '@material-ui/core';
 import './css/portfolio.css'
 
 export default function Portfolio() {
@@ -62,7 +62,7 @@ export default function Portfolio() {
    
     return (
         <>
-        <div className="portfolio">
+        <div className="portfolio" id="portfolio">
             <div className="service-bold text-center">Portfolio Showcase</div>
             <div className="portfolio-text">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam quaerat placeat voluptatum enim assumenda 

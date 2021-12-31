@@ -28,8 +28,8 @@ const Header = () => {
         },
         {
             id:1,
-            name:'Portfolio',
-            link:'/portfolio'
+            name:'Upload blog',
+            link:'/newpost'
         },
         {
             id:2,
@@ -119,9 +119,9 @@ const Header = () => {
                     </ul>
                 </span>
                 <span className="hideOnDesktop" onClick={toggleDrawer('right', true)}>
-                    <Fab style={{backgroundColor:'#FB9C23'}}>
+                    
                         <i className="fa fa-bars fa-2x"></i>
-                    </Fab>
+                   
                 </span>
             </span>
         </div>
