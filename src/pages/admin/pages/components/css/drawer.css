@@ -1,0 +1,18 @@
+.drawer-item{
+    line-height: 50px;
+    cursor: pointer;
+    
+}
+.drawer-item-text{
+    font-size: 13px;
+    font-weight: 600;
+}
+.drawer-item-icon{
+    margin-right: 10px;
+}
+.drawer-logo{
+    height: 50px;
+    width: 100px;
+    margin-left: 30px;
+    margin-bottom: 100px;
+}

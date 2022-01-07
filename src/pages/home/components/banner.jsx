@@ -7,7 +7,7 @@ const Banner = () => {
         <div className="banner1">
             <Header/>
             <div className="banner-grid row">
-                <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 bn1-grid1">
+                <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12 bn1-grid1">
                     <div className="small-colored">Change your view of Copy writing</div>
                     <div className="big-bold">Rank Your Buisness With Copy Writing</div>
                     <div className="small-text">
@@ -19,7 +19,7 @@ const Banner = () => {
                         <button className="read-more">Read more</button>
                     </div>
                 </div>
-                <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 bn1-grid2">
+                <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12 bn1-grid2">
                     <img src="../../../assets/banner-image.png" alt="banner" className="banner1-img" />
                 </div>
             </div>

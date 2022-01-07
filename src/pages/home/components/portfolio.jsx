@@ -1,4 +1,7 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
+import {apiUrl} from '../../../config.json'
+import axios from 'axios'
 // import { Fab } from '@material-ui/core';
 import './css/portfolio.css'
 
@@ -6,45 +9,61 @@ export default function Portfolio() {
     const [categories, setCategories] =useState(
         [
             { id:0, name:'All',active:true, category:'all'},
-            {id:1,name:'CopyWritting',active:false, category:'cr' },
-            { id:2, name:'Email Marketing',active:false, category:'em' },
-            { id:3, name:'SEO optimization',active:false, category:'so'}
+            {id:1,name:'copywritting',active:false, category:'copywritting' },
+            { id:2, name:'Email Marketing',active:false, category:'Email marketing' },
+            { id:3, name:'SEO optimization',active:false, category:'Seo Optimization'},
+            { id:3, name:'Affiliate Marketing',active:false, category:'Affiliate marketing'}
         ] 
     )
 
-    const [data, setData] = useState(
-        [
-            {
-                author:'CR',
-                date:'23rd December, 2022',
-                title:'Ten secrets you wanna know. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quos obcaecati perferendis voluptatum debitis?',
-                image:'images.jpg',
-                category:'cr'
-            },
-            {
-                author:'EM',
-                date:'23rd January, 2022',
-                title:'Ten secrets you wanna know. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quos obcaecati perferendis voluptatum debitis?',
-                image:'icopy.jpg',
-                category:'em'
-            },
-            {
-                author:'SEO',
-                date:'23rd December, 2022',
-                title:'Ten secrets you wanna know. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quos obcaecati perferendis voluptatum debitis?',
-                image:'images.jpg',
-                category:'so'
-            },
-            {
-                author:'CR',
-                date:'23rd December, 2022',
-                title:'Ten secrets you wanna know. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quos obcaecati perferendis voluptatum debitis?',
-                image:'images.jpg',
-                category:'cr'
-            },
-        ]
+    const [data, setData] = useState([])
+    const [img_dir, setImg_dir] = useState('')
+
+    useEffect(()=>{
+        async function getPosts(){
+            const response =  await axios.get(`${apiUrl}/upload/post/`)
+            
+            setData(response.data.data)
+            setImg_dir(response.data.image_dir)
+            
+            
+        }
+        getPosts()
+    },[])
+
+    // const [data, setData] = useState(
+    //     [
+    //         {
+    //             author:'CR',
+    //             date:'23rd December, 2022',
+    //             title:'Ten secrets you wanna know. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quos obcaecati perferendis voluptatum debitis?',
+    //             image:'images.jpg',
+    //             category:'cr'
+    //         },
+    //         {
+    //             author:'EM',
+    //             date:'23rd January, 2022',
+    //             title:'Ten secrets you wanna know. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quos obcaecati perferendis voluptatum debitis?',
+    //             image:'icopy.jpg',
+    //             category:'em'
+    //         },
+    //         {
+    //             author:'SEO',
+    //             date:'23rd December, 2022',
+    //             title:'Ten secrets you wanna know. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quos obcaecati perferendis voluptatum debitis?',
+    //             image:'images.jpg',
+    //             category:'so'
+    //         },
+    //         {
+    //             author:'CR',
+    //             date:'23rd December, 2022',
+    //             title:'Ten secrets you wanna know. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quos obcaecati perferendis voluptatum debitis?',
+    //             image:'images.jpg',
+    //             category:'cr'
+    //         },
+    //     ]
     
-    )
+    // )
     const [filtered, setFiltered] = useState([])
     const handleSelection = (item, i)=>{
         const clone = [...categories]
@@ -87,15 +106,16 @@ export default function Portfolio() {
 
         <div className="proj-cards row">
             {(filtered.length===0?data:filtered).map((item, i)=>
-                <div key={i} className="col-lg-3 col-md-3 col-sm-12 col-xs-12 proj-card">
-                <img src={`../../../assets/${item.image}`} className="proj-img" alt="display"  />
+            <div key={i} className="col-lg-3 col-md-3 col-sm-12 col-xs-12 proj-card">
+               <Link style={{textDecoration:'none'}} to={`/post/${item._id}`}>
+               <img src={`${img_dir}/${item.filename}`} className="proj-img" alt="display"  />
                 <div className="proj-card-texts">
                     <div className="textIcons">
                         <span className="text-icon">
-                            <i className="fa fa-proj-card fa-user"></i> By <span className="admin">{item.author}</span>
+                            <i className="fa fa-proj-card fa-list-alt"></i> <span className="admin">{item.category}</span>
                         </span> 
                         <span className="text-icon">
-                            <i className="fa fa-proj-card fa-calendar"></i> {item.date}
+                            <i className="fa fa-proj-card fa-calendar"></i> {item.createdAt}
                         </span>
                     </div>
                     <div className="card-title">
@@ -104,7 +124,8 @@ export default function Portfolio() {
                     <div className="card-read-more">
                         Read more <i className="fa fa-arrow-right"></i>
                     </div>
-                </div>  
+                </div>
+               </Link>
             </div>
             )}
 

@@ -61,6 +61,18 @@
     margin-top: 20px;
 }
 
+@media screen and (max-width:962px) and (min-width:769px){
+    .small-colored{
+        width: 500px !important;
+    }
+    .small-text{
+        width: 500px !important;
+    }
+    .banner-btns{
+        width: 400px;
+    }
+}
+
 @media screen and (max-width:768px) {
     .small-colored{
         margin-top: 45px;

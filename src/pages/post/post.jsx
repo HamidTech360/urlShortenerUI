@@ -1,11 +1,33 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+import {apiUrl} from '../../config'
 import Header from '../home/components/header'
 import Comment from './components/comments'
 import NewComment from './components/newComment'
 
+
 import './css/post.css'
 
-const Post = ()=>{
+const Post = (props)=>{
+    const [data, setData] = useState([])
+    useEffect(()=>{
+        window.scrollTo(0,0)
+        const postId = props.match.params.id
+        console.log(postId);
+        
+        async function getPost (){
+            try{
+                const response = await axios.get(`${apiUrl}/upload/post/${postId}`)
+                console.log(response.data);
+                
+            }catch(ex){
+                console.log(ex);
+                
+            }
+        }
+
+        getPost()
+    },[])
     return(
         <div className="post-page">
             <Header/>
@@ -22,7 +44,7 @@ const Post = ()=>{
                  
             </div>
             <div className="post-title ">
-                <div className="text-centr">
+                <div className="text-cent">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis velit 
                 </div>
                 <div className="sub-title">

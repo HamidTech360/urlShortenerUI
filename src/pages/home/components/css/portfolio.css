@@ -41,7 +41,8 @@
     padding: 0 !important;
     padding-right: 30px;
     margin-right: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
 }
 .proj-card-texts{
     padding: 15px;
@@ -82,11 +83,14 @@
 
 @media screen and (max-width:768px) {
     .portfolio{
-        padding-left: 20px;
+        padding-left: 10px;
         padding-right: 20px;
     }
     .proj-cards{
         padding-left: 20px;
         padding-right: 20px;
+    }
+    .btn-categs{
+        margin-right: 10px;
     }
 }
