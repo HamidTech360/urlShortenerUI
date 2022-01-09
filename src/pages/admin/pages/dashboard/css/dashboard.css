@@ -23,10 +23,16 @@
 }
 
 
+
 @media screen and (max-width:768px){
     .categ-tab-dash{
         margin-left: 10px;
         margin-right: 0px;
         padding-right: 0px !important;
+    }
+    .admin-btn-categs{
+        font-size: 14px;
+        margin-right: 6px;
+        margin-bottom: 10px;
     }
 }

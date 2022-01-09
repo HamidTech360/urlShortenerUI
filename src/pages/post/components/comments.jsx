@@ -1,14 +1,14 @@
 import React from 'react'
 import '../css/comment.css'
 
-const Comment =()=>{
+const Comment =({name, date, body})=>{
     return (
         <div className="comment">
             
             <div className="comment-tab">
-                <div className="comment-name">Hamid</div>
-                <div className="comment-date">25th july, 2022</div>
-                <div className="comment-text">Nice post there. That was an awesome one to go with fellas</div>
+                <div className="comment-name">{name}</div>
+                <div className="comment-date">{date}</div>
+                <div className="comment-text"> {body} </div>
             </div>
         </div>
     )

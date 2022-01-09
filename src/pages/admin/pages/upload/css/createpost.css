@@ -20,7 +20,9 @@
     margin: 30px;
     border-radius: 5px;
 }
-
+.upload-inpt{
+    font-size: 14px;
+}
 @media screen and (max-width:768px){
     .create-post-form{
         padding-left: 20px;

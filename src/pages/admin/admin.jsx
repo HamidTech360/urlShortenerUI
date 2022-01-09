@@ -9,9 +9,11 @@ import SideNav from './pages/components/sidenav'
 import CreatePost from './pages/upload/createpost'
 import Dashboard from './pages/dashboard/dashbord'
 import Settings from './pages/settings/settings'
+import EditPost from './pages/editPost/edit'
 
 
 import './admin.css'
+
 const Admin = ()=>{
     const history = useHistory()
     // const login_token = localStorage.getItem('login_token')
@@ -90,6 +92,7 @@ const Admin = ()=>{
                     <div className="dashboard-main">                 
                         <Route path="/admin/settings"  component={Settings} />
                         <Route path="/admin/upload"  component={CreatePost} />
+                        <Route path="/admin/edit/:id"  component={EditPost} />
                         <Route path="/admin" exact component={Dashboard} />
                     </div>       
         </div>

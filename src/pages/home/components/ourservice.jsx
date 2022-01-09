@@ -2,7 +2,7 @@ import React from 'react'
 import './css/ourservice.css'
 const OurService = () => {
     return ( 
-        <div className="our-service text-center">
+        <div className="our-service text-center" id="service">
             <div className="what-we-do">What we do</div>
             <div className="service-bold">Service We Provide</div>
             <div className="">

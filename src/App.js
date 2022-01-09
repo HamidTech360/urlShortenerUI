@@ -5,6 +5,7 @@ import Post from './pages/post/post'
 import CreatePost from './pages/createPost/createpost'
 import Admin from './pages/admin/admin'
 import Login from './pages/login/login'
+import Test from './pages/test//login'
 function App() {
   return (
     <BrowserRouter>
@@ -13,6 +14,7 @@ function App() {
         <Route path="/post/:id" component={Post}/>
         <Route path="/admin" component={Admin}/>
         <Route path="/login" component={Login}/>
+        <Route path="/test" component={Test}/>
         <Route path="/" component={Home}/>
       </Switch>
       

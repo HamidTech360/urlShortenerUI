@@ -1,5 +1,5 @@
 import React from 'react'
-//import { Fab } from '@material-ui/core';
+import {HashLink} from 'react-router-hash-link'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core'
 import { Box } from '@material-ui/core'
@@ -28,18 +28,20 @@ const Header = () => {
         },
         {
             id:1,
-            name:'Upload blog',
-            link:'/newpost'
+            name:'Admin',
+            link:'/login'
         },
         {
             id:2,
             name:'Services',
-            link:'/service'
+            link:'/#service',
+            hash:true
         },
         {
             id:3,
-            name:'About Me',
-            link:'/about'
+            name:'Portfolio Showcase',
+            link:'/#portfolio',
+            hash:true
         },
         {
             id:4,
@@ -70,20 +72,29 @@ const Header = () => {
         <Box
           sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
           role="presentation"
-          onClick={toggleDrawer(anchor, false)}
-          onKeyDown={toggleDrawer(anchor, false)}
+          onClick={toggleDrawer('right', false)}
+          onKeyDown={toggleDrawer('right', false)}
           
         >
           <List>
                 {NavOptions.map((item, index) => (
-                    <div className="NavBar-item" key={index} style={{backgroundColor:item.isActive?'rgba(255, 255, 255, 0.15)':'', paddingLeft:'50px', marginBottom:'30px'}}>
+                  item.hash?
+                  <div className="NavBar-item" key={index} style={{backgroundColor:item.isActive?'rgba(255, 255, 255, 0.15)':'', paddingLeft:'50px', marginBottom:'30px'}}>
+                  <HashLink to={item.link} style={{textDecoration:'none', color:'lightgrey'}}>
+                    <span className="NavBar-item-item-icon"> <i className={`fa ${item.icon} fa-1x`}></i> </span>
+                     <span className="NavBar-item-item-text">{item.name}</span>
+                  </HashLink>
+                </div>:
+                  <div className="NavBar-item" key={index} style={{backgroundColor:item.isActive?'rgba(255, 255, 255, 0.15)':'', paddingLeft:'50px', marginBottom:'30px'}}>
                       <Link to={item.link} style={{textDecoration:'none', color:'lightgrey'}}>
                         <span className="NavBar-item-item-icon"> <i className={`fa ${item.icon} fa-1x`}></i> </span>
                          <span className="NavBar-item-item-text">{item.name}</span>
                       </Link>
-                    </div>
+                  </div>
                 ))} 
-                
+                <div className="navBar-item">
+                  <button className="btn-contactus">Contact Us</button>
+                </div>
             </List>
          <hr/>
         
@@ -108,8 +119,13 @@ const Header = () => {
                 <span className="hideOnMobile">
                     <ul className="nav ">
                         {NavOptions.map((el, i)=>
+                          el.hash?
+                          <HashLink to={el.link} style={{textDecoration:'none'}}>
+                              <li className="nav-item">{el.name}</li>
+                          </HashLink>:
+
                           <Link key={i} to={el.link} style={{textDecoration:'none'}}>
-                               <li className="nav-item">{el.name}</li>
+                          <li className="nav-item">{el.name}</li>
                          </Link> 
                         )}
                         

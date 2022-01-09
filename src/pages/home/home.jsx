@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Banner from './components/banner'
 import OurService from './components/ourservice'
 import Cards from './components/cards'
@@ -11,12 +11,9 @@ import 'font-awesome/css/font-awesome.css'
 const Home = ()=>{
     // const [preloader, setPreloader] = useState(true)
    
-    // useEffect(()=>{
-        
-    //     setTimeout(() => {
-    //         setPreloader(false)
-    //     }, 200);
-    // },[])
+    useEffect(()=>{ 
+        window.scrollTo(0,0)
+    },[])
 
     // if(preloader){
     //     return (

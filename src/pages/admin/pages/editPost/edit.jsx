@@ -1,87 +1,93 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {apiUrl} from '../../../../config'
 import axios from 'axios'
 import Joi from 'joi-browser'
 import _ from 'lodash'
-import './css/createpost.css'
 
-const CreatePost = ()=>{
+
+const EditPost = (props)=>{
+    const postId = props.match.params.id
     const[errorMsg, setErrorMsg] = useState(null)
     const [successMsg, setSuccessMsg] = useState(null)
-    const [data, setdata] = useState({
+    const [data, setData] = useState({
         title:'',
-        post:'',
-        fileUrl:null,
-        file:'',
-        category:'',
-        permitId:''
+        body:'',
+        category:''
+        
     })
-    
+
+    useEffect(()=>{
+        window.scrollTo(0,0)
+        
+        console.log(postId);
+        
+        async function getPost (){
+            try{
+                const response = await axios.get(`${apiUrl}/upload/post/${postId}`)
+                setData(response.data.data)
+                
+                console.log(response.data.data);
+                
+            }catch(ex){
+                console.log(ex);
+                
+            }
+        }
+
+        getPost()
+    },[])
+
     const validate = ()=>{
         const schema = {
             title:Joi.string().min(10).required(),
-            post:Joi.string().min(10).required(),
+            body:Joi.string().min(10).required(),
             category:Joi.string().required()
         }
-        const payload = _.pick(data, ['title', 'category', 'post'])
+        const payload = _.pick(data, ['title', 'category', 'body'])
         return Joi.validate(payload, schema, {abortEarly:false})
 
     }
-    const handleImgSelect = (e)=>{
-        e.preventDefault()
-        let reader = new FileReader()
-        let file = e.target.files[0]
-
-        reader.onloadend= ()=>{
-            const clone = {...data}
-            clone['file']= file
-            clone['fileUrl'] = reader.result
-            setdata(clone)
-        }
-        reader.readAsDataURL(file)
-        // console.log(data);
-        
-    }
+  
 
     const handleChange = (e)=>{
         const clone = {...data}
         clone[e.currentTarget.name] = e.currentTarget.value
-        setdata(clone)
+        setData(clone)
         // console.log(data);
         
     }
 
     const handleSubmit = async ()=>{
-        // if(data.permitId !=="124") return setErrorMsg('Incorrect permit Id supplied')
-        console.log(data);
+      
+        // console.log(data);
         
-        let formData = new FormData()
-        formData.append('file', data.file)
-        formData.append('title', data.title)
-        formData.append('category', data.category)
-        formData.append('body', data.post)
+        
+        const payload = _.pick(data, ['title','category', 'body'])
+        console.log(payload);
+        
 
         const {error} = validate()
         if(error) {
             setSuccessMsg(null)
             return setErrorMsg(error.details[0].message)
         }
-        
         try{
-            const response = await axios.post(`${apiUrl}/upload/post`, formData, {
+            const response = await axios.put(`${apiUrl}/upload/post/${postId}`, payload,{
                 headers:{
-                    'Authorization':localStorage.getItem('auth_token')
+                    'Authorization': localStorage.getItem('auth_token')
                 }
-            })
+            } )
+            console.log(response.data);
+            
             if(response.data.status==="success"){
                 setErrorMsg(null)
-                setSuccessMsg('Post uploaded successfully')
+                setSuccessMsg('Post Edited successfully')
             }
             console.log(response.data);
             
         }catch(ex){
-            console.log(ex);
-            setErrorMsg('You are not authorized to perform this action')
+            console.log(ex.response?.data);
+            
         }
         
         
@@ -92,15 +98,10 @@ const CreatePost = ()=>{
         <div className="create-post">
         
             <div className="create-post-form">
-                <div className="page-title">Upload Post</div>
+                <div className="page-title">Edit Post</div>
                 {errorMsg?<div className="alert alert-danger text-center">{errorMsg}</div>:''}
                 {successMsg?<div className="alert alert-success text-center">{successMsg}</div>:''}
-                {data.file?<div className="img-prev-box">
-                    <img src={data.fileUrl} alt="preview" className="img-preview"/>
-                </div>:''}
-                <div className="form-group">
-                    <input onChange={(e)=>handleImgSelect(e)} type="file" name="" className="form-control"/>
-                </div>
+                
                 <div className="form-group">
                     <input 
                         type="text" 
@@ -112,7 +113,7 @@ const CreatePost = ()=>{
                     />
                 </div>
                 <div className="form-group">
-                   <select onChange={(e)=>handleChange(e)} name="category" id="" className="form-control upload-inpt">
+                   <select value={data.category} onChange={(e)=>handleChange(e)} name="category" id="" className="form-control upload-inpt">
                         <option value="">Select category</option>
                        <option value="copywritting">Copywritting</option>
                        <option value="Email marketing">Email Marketing</option>
@@ -127,20 +128,21 @@ const CreatePost = ()=>{
                         className="form-control upload-inpt" 
                         rows="10" 
                         placeholder="Write something..."
-                        name="post"
+                        name="body"
                         onChange={(e)=>handleChange(e)}
-                        value={data.post}
+                        value={data.body}
                     ></textarea>
                 </div>
                <div className="form-group">
                     {errorMsg?<div className="alert alert-danger text-center">{errorMsg}</div>:''}
                     {successMsg?<div className="alert alert-success text-center">{successMsg}</div>:''}
-                    <button onClick={()=>handleSubmit()} className="btn-danger form-control">upload post</button>
+                    <button onClick={()=>handleSubmit()} className="btn-danger form-control">Edit post</button>
                 </div>
             </div>
         </div>
     )
 }
-export default CreatePost
+export default EditPost
+
 
  

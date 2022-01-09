@@ -31,39 +31,7 @@ export default function Portfolio() {
         getPosts()
     },[])
 
-    // const [data, setData] = useState(
-    //     [
-    //         {
-    //             author:'CR',
-    //             date:'23rd December, 2022',
-    //             title:'Ten secrets you wanna know. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quos obcaecati perferendis voluptatum debitis?',
-    //             image:'images.jpg',
-    //             category:'cr'
-    //         },
-    //         {
-    //             author:'EM',
-    //             date:'23rd January, 2022',
-    //             title:'Ten secrets you wanna know. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quos obcaecati perferendis voluptatum debitis?',
-    //             image:'icopy.jpg',
-    //             category:'em'
-    //         },
-    //         {
-    //             author:'SEO',
-    //             date:'23rd December, 2022',
-    //             title:'Ten secrets you wanna know. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quos obcaecati perferendis voluptatum debitis?',
-    //             image:'images.jpg',
-    //             category:'so'
-    //         },
-    //         {
-    //             author:'CR',
-    //             date:'23rd December, 2022',
-    //             title:'Ten secrets you wanna know. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quos obcaecati perferendis voluptatum debitis?',
-    //             image:'images.jpg',
-    //             category:'cr'
-    //         },
-    //     ]
-    
-    // )
+
     const [filtered, setFiltered] = useState([])
     const handleSelection = (item, i)=>{
         const clone = [...categories]
@@ -89,12 +57,12 @@ export default function Portfolio() {
             </div>
             <div className="text-center"><button className="btn-divider"></button></div>
             
-            <div className="categ-tab text-center">
+            <div className="categ-tab  text-cente">
             
                 {categories.map((item, i)=>
                     <button 
                         key={i} 
-                        className={`btn-categs ${item.active?'active':''}`}
+                        className={`btn-categs ${item.active?'active':''} `}
                         onClick={()=>handleSelection(item, i)}
                     >
                         {item.name}
