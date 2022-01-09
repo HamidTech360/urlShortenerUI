@@ -120,7 +120,7 @@ const Header = () => {
                     <ul className="nav ">
                         {NavOptions.map((el, i)=>
                           el.hash?
-                          <HashLink to={el.link} style={{textDecoration:'none'}}>
+                          <HashLink to={el.link} key={i} style={{textDecoration:'none'}}>
                               <li className="nav-item">{el.name}</li>
                           </HashLink>:
 
