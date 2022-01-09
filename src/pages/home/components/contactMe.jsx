@@ -3,7 +3,7 @@ import { Fab } from '@material-ui/core'
 import './css/contactMe.css'
 export default function ContactMe() {
     return (
-        <div className="contactMe">
+        <div className="contactMe" id="contactMe">
             <div className="contactme-text text-center">
                 <div className="banner2-medium">HAVE ANY QUERY?</div>
                 <div className="banner2-bold">CONTACT ME</div>

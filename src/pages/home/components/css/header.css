@@ -73,4 +73,8 @@
     .app-name{
         letter-spacing: 0px;
     }
+    .btn-contactus{
+        margin-left: 20px;
+        background-color: #FB9C23;
+    }
 }

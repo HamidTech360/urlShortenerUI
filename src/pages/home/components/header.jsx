@@ -92,9 +92,11 @@ const Header = () => {
                       </Link>
                   </div>
                 ))} 
+                <HashLink to={"/#contactMe"}>
                 <div className="navBar-item">
-                  <button className="btn-contactus">Contact Us</button>
+                  <button className="btn-contactus">Contact Me</button>
                 </div>
+                </HashLink>
             </List>
          <hr/>
         
@@ -129,9 +131,11 @@ const Header = () => {
                          </Link> 
                         )}
                         
-                        <li>
+                       <HashLink to={"/#contactMe"}>
+                       <li>
                             <button className="btn-contactus">Contact Us</button>
                         </li>
+                       </HashLink>
                     </ul>
                 </span>
                 <span className="hideOnDesktop" onClick={toggleDrawer('right', true)}>
