@@ -8,6 +8,7 @@ import { Box } from '@material-ui/core'
 
 import './css/drawer.css'
 import 'bootstrap/dist/css/bootstrap.css'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
 
 
@@ -21,13 +22,14 @@ const useStyles = makeStyles({
   }
 })
 
+
+
 const Drawer = ({NavOptions})=>{
-
-    
-   
-     
-
-
+  const history = useHistory()
+  const LogOut = ()=>{
+    localStorage.removeItem('auth_token')
+    history.push('/login')
+  }
     const [state, setState] = React.useState({
         top: false,  
         bottom: false,
@@ -64,6 +66,11 @@ const Drawer = ({NavOptions})=>{
                       </Link>
                     </div>
                 ))}
+
+                  <div className="drawer-item" onClick={()=>LogOut()}   style={{ paddingLeft:'50px'}}>
+                        <span className="drawer-item-icon"> <i className={`fa fa-sign-out fa-1x`}></i> </span>
+                         <span className="drawer-item-text">Log out</span>
+                    </div>
             </List>
        
         

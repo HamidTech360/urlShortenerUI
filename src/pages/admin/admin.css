@@ -1,11 +1,5 @@
-.fa-bell-o{
-    margin-right: 30px;
-    color: rgb(223, 103, 82);
-}
-.fa-sign-out{
-    margin-left: 10px;
-    color: #D7634E;
-}
+
+
 .logout{
     margin-left: 30px;
     font-size: 10px;
@@ -62,9 +56,7 @@
         margin-top: -30px;
     }
     
-    .fa-bell-o{
-        margin-right: 15px;
-    }
+  
     .logout{
         margin-left: 15px;
     }

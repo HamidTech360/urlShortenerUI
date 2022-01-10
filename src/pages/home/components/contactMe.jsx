@@ -1,7 +1,52 @@
-import React from 'react'
-import { Fab } from '@material-ui/core'
+import React, {useEffect, useState} from 'react'
+import axios from 'axios'
+import {apiUrl} from '../../../config.json'
+import { Fab, CircularProgress } from '@material-ui/core'
 import './css/contactMe.css'
 export default function ContactMe() {
+    const [showProgress, setShowProgress] = useState(false)
+    const [errorMsg, setErrorMsg] = useState(null)
+    const [successMsg, setSuccessMsg] = useState(null)
+    const [data, setData] = useState({
+        name:'',
+        email:'',
+        mailBody:''
+    })
+    
+   const handleChange = (e)=>{
+       const clone = {...data}
+       clone[e.currentTarget.name] = e.currentTarget.value
+       setData(clone)
+       console.log(data);
+       
+   }
+
+   const handleSubmit = async ()=>{
+        setShowProgress(true)
+        try{
+            const response = await axios.post(`${apiUrl}/mail`, data)
+            console.log(response.data)
+            if(response.data.status==="success"){
+                setSuccessMsg('Your message has been delivered. Thank you for contacting us')
+                setErrorMsg(null)
+                setShowProgress(false)
+                clearField()
+            }
+        }catch(ex){
+            setErrorMsg(ex.response?.data)
+            setSuccessMsg(null)
+            setShowProgress(false)
+        }
+   }
+
+
+   const clearField = ()=>{
+       const clone = {...data}
+       clone.name=''
+       clone.email=''
+       clone.mailBody=''
+       setData(clone)
+   }
     return (
         <div className="contactMe" id="contactMe">
             <div className="contactme-text text-center">
@@ -14,22 +59,41 @@ export default function ContactMe() {
             </div>
             <div className="form">
                 <div className="form-group">
-                    <input type="text" className="form-control contact-input" placeholder="Your name"  />
+                    <input 
+                        type="text" 
+                        className="form-control contact-input" 
+                        placeholder="Your name" 
+                        name="name"
+                        onChange={(e)=>handleChange(e)}
+                        value={data.name}
+                     />
                 </div>
 
                 <div className="form-group">
-                    <input type="email" placeholder="Your Email" className="form-control contact-input" />
+                    <input 
+                        type="email" 
+                        placeholder="Your Email" 
+                        className="form-control contact-input"
+                        name="email"
+                        onChange={(e)=>handleChange(e)}
+                        value={data.email} 
+                    />
                 </div>
 
                 <div className="form-group">
-                    <input type="text" placeholder="Your Subject" className="form-control contact-input" />
+                    <textarea 
+                        rows="10" 
+                        placeholder="Your Message" 
+                        className="form-control contact-input"
+                        name="mailBody"
+                        onChange={(e)=>handleChange(e)}
+                        value={data.mailBody}
+                     />
                 </div>
-
+                {successMsg?<div className="alert alert-success"> {successMsg} </div>:''}
+                {errorMsg?<div className="alert alert-danger"> {errorMsg} </div>:''}
                 <div className="form-group">
-                    <textarea cols="80" placeholder="Your Message" className="form-control contact-input" />
-                </div>
-                <div className="form-group">
-                    <button className="btn btn-lg btn-submit-msg form-control">Submit</button>
+                    <button onClick={()=>handleSubmit()} className="btn btn-lg btn-submit-msg form-control"> {showProgress?<CircularProgress/>:'Send Message'} </button>
                 </div>
             </div>
 

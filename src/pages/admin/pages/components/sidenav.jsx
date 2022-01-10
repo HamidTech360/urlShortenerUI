@@ -7,6 +7,7 @@ import List from '@material-ui/core/List';
 
 import 'bootstrap/dist/css/bootstrap.css'
 import './css/sidebar.css'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom'
 
 
 const useStyles = makeStyles({
@@ -19,9 +20,15 @@ const useStyles = makeStyles({
   }
 })
 
-const SideNav = ({NavOptions})=>{
-    const styles = useStyles()
 
+
+const SideNav = ({NavOptions})=>{
+    const history = useHistory()
+    const styles = useStyles()
+    const LogOut = ()=>{
+        localStorage.removeItem('auth_token')
+        history.push('/login')
+    }
     // const [NavOptions, setNavOptions] =useState(
    
     // ) 
@@ -63,6 +70,12 @@ const SideNav = ({NavOptions})=>{
                         </div>
                    </Link>
                 ))}
+                    
+                <div className="list-item dash-list-item" onClick={()=>LogOut()}  style={{ paddingLeft:'50px'}}>
+                    <span className="list-item-icon"> <i className={`fa fa-sign-out fa-1x`}></i> </span>
+                    <span className="list-item-text">Log out</span>
+                </div>
+                   
                 </List>
                 <div className="fixed-logout">Logout</div>
             </Drawer>

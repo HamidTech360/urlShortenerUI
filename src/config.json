@@ -1,3 +1,4 @@
 {
-    "apiUrl":"http://localhost:3001/api"
+    "apiUrl":"https://icopy-server.herokuapp.com/api",
+    "apiUrl-":"http://localhost:3001/api"
 }

@@ -3,11 +3,13 @@ import {apiUrl} from '../../../../config'
 import axios from 'axios'
 import Joi from 'joi-browser'
 import _ from 'lodash'
+import { CircularProgress } from '@material-ui/core'
 
 
 const EditPost = (props)=>{
     const postId = props.match.params.id
     const[errorMsg, setErrorMsg] = useState(null)
+    const [showProgress, setShowProgress] = useState(false)
     const [successMsg, setSuccessMsg] = useState(null)
     const [data, setData] = useState({
         title:'',
@@ -71,6 +73,7 @@ const EditPost = (props)=>{
             setSuccessMsg(null)
             return setErrorMsg(error.details[0].message)
         }
+        setShowProgress(true)
         try{
             const response = await axios.put(`${apiUrl}/upload/post/${postId}`, payload,{
                 headers:{
@@ -82,12 +85,14 @@ const EditPost = (props)=>{
             if(response.data.status==="success"){
                 setErrorMsg(null)
                 setSuccessMsg('Post Edited successfully')
+                setShowProgress(false)
             }
             console.log(response.data);
             
         }catch(ex){
             console.log(ex.response?.data);
-            
+            setShowProgress(false)
+            setErrorMsg(ex.response?.data)
         }
         
         
@@ -136,7 +141,7 @@ const EditPost = (props)=>{
                <div className="form-group">
                     {errorMsg?<div className="alert alert-danger text-center">{errorMsg}</div>:''}
                     {successMsg?<div className="alert alert-success text-center">{successMsg}</div>:''}
-                    <button onClick={()=>handleSubmit()} className="btn-danger form-control">Edit post</button>
+                    <button onClick={()=>handleSubmit()} className="btn-danger form-control"> {showProgress?<CircularProgress size={20}/>:'Edit post'} </button>
                 </div>
             </div>
         </div>

@@ -76,7 +76,7 @@ export default function Portfolio() {
             {(filtered.length===0?data:filtered).map((item, i)=>
             <div key={i} className="col-lg-3 col-md-3 col-sm-12 col-xs-12 proj-card">
                <Link style={{textDecoration:'none'}} to={`/post/${item._id}`}>
-               <img src={`${img_dir}/${item.filename}`} className="proj-img" alt="display"  />
+               <img src={`${img_dir}${item.filename}`} className="proj-img" alt="display"  />
                 <div className="proj-card-texts">
                     <div className="textIcons">
                         <span className="text-icon">

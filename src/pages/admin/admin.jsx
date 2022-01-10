@@ -16,32 +16,14 @@ import './admin.css'
 
 const Admin = ()=>{
     const history = useHistory()
-    // const login_token = localStorage.getItem('login_token')
-    // const [userData, setUserData] = useState({})
-    // useEffect(()=>{
-    //     window.scrollTo(0,0)
-    //     if(!login_token){
-    //         history.push('/login')
-           
-    //     }else{
-    //         // alert('you are authorized')
-    //         try{
-    //             const login_token = localStorage.getItem('login_token')
-    //             async function getUserData (){
-    //                 const response = await axios.get(`${apiUrl}/user/dashboard`, {headers:
-    //                     {'Authorization':`Bearer ${login_token}`}
-    //                 })
-    //                 console.log(response.data);
-    //                 setUserData(response.data.data)
-    //             }
-    //             getUserData()
-                
-    //        }catch(ex){
-    //            console.log(ex.response?.data);
-    //            alert('An error occured, please check your internet connection')
-    //        }
-    //     }
-    // },[history, login_token])
+    const login_token = localStorage.getItem('auth_token')
+    const [userData, setUserData] = useState({})
+    useEffect(()=>{
+        window.scrollTo(0,0)
+        if(!login_token){
+            history.push('/login')
+        }
+    },[history, login_token])
     const NavOptions = [
         {
             id:0,

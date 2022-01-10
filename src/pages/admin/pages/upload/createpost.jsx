@@ -4,9 +4,11 @@ import axios from 'axios'
 import Joi from 'joi-browser'
 import _ from 'lodash'
 import './css/createpost.css'
+import { CircularProgress } from '@material-ui/core'
 
 const CreatePost = ()=>{
     const[errorMsg, setErrorMsg] = useState(null)
+    const[showProgress, setShowProgress] = useState(false)
     const [successMsg, setSuccessMsg] = useState(null)
     const [data, setdata] = useState({
         title:'',
@@ -52,6 +54,7 @@ const CreatePost = ()=>{
     }
 
     const handleSubmit = async ()=>{
+
         // if(data.permitId !=="124") return setErrorMsg('Incorrect permit Id supplied')
         console.log(data);
         
@@ -66,7 +69,7 @@ const CreatePost = ()=>{
             setSuccessMsg(null)
             return setErrorMsg(error.details[0].message)
         }
-        
+        setShowProgress(true)
         try{
             const response = await axios.post(`${apiUrl}/upload/post`, formData, {
                 headers:{
@@ -76,17 +79,29 @@ const CreatePost = ()=>{
             if(response.data.status==="success"){
                 setErrorMsg(null)
                 setSuccessMsg('Post uploaded successfully')
+                setShowProgress(false)
+                clearField()
             }
             console.log(response.data);
             
         }catch(ex){
             console.log(ex);
             setErrorMsg('You are not authorized to perform this action')
+            setShowProgress(false)
+            setErrorMsg(ex.response?.data)
         }
         
         
         
 
+    }
+
+    const clearField= ()=>{
+        const clone = {...data}
+        clone.category = ''
+        clone.title = ''
+        clone.post = ''
+        setdata(clone)
     }
     return(
         <div className="create-post">
@@ -135,7 +150,7 @@ const CreatePost = ()=>{
                <div className="form-group">
                     {errorMsg?<div className="alert alert-danger text-center">{errorMsg}</div>:''}
                     {successMsg?<div className="alert alert-success text-center">{successMsg}</div>:''}
-                    <button onClick={()=>handleSubmit()} className="btn-danger form-control">upload post</button>
+                    <button onClick={()=>handleSubmit()} className="btn-danger form-control"> {showProgress?<CircularProgress size={20}/>:'upload post'} </button>
                 </div>
             </div>
         </div>
