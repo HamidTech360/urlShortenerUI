@@ -39,7 +39,7 @@ const Post = (props)=>{
         
             
             <div className="image-box" style={{
-                backgroundImage:`url(../../../assets/placeholder2.jpg)`,
+                backgroundImage:`url(${data.filename})`,
                  backgroundSize:'cover',
                  backgroundRepeat:'no-repeat',
                  backgroundPosition:'center'

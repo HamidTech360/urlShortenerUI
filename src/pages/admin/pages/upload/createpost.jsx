@@ -41,7 +41,7 @@ const CreatePost = ()=>{
             setdata(clone)
         }
         reader.readAsDataURL(file)
-        // console.log(data);
+        console.log(data);
         
     }
 
@@ -59,7 +59,7 @@ const CreatePost = ()=>{
         console.log(data);
         
         let formData = new FormData()
-        formData.append('file', data.file)
+        formData.append('file', data.fileUrl)
         formData.append('title', data.title)
         formData.append('category', data.category)
         formData.append('body', data.post)
@@ -85,10 +85,10 @@ const CreatePost = ()=>{
             console.log(response.data);
             
         }catch(ex){
-            console.log(ex);
-            setErrorMsg('You are not authorized to perform this action')
+            console.log(ex.response?.data);
+            setErrorMsg('Something went wrong. Please make sure to choose an image with your post')
             setShowProgress(false)
-            setErrorMsg(ex.response?.data)
+            // setErrorMsg(ex.response?.data)
         }
         
         

@@ -120,7 +120,7 @@ export default function Dashboard() {
         <div className="proj-cards row">
             {(filtered.length===0?data:filtered).map((item, i)=>
                 <div key={i} className="col-lg-5 col-md-5 col-sm-12 col-xs-12 proj-card">
-                <img src={`../../../assets/placeholder2.jpg`} className="proj-img" alt="display"  />
+                <img src={`${item.filename}`} className="proj-img" alt="display"  />
                 <div className="proj-card-texts">
                     <div className="textIcons">
                         <span className="text-icon">
