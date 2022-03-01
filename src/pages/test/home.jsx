@@ -33,7 +33,10 @@ const Login = ()=>{
             const response = await axios.post(`${apiUrl}/encode`, data)
              console.log(response.data);
             setResponse(response.data.data)
+            setErr_msg(null)
+            setShowProgress(false)
         }catch(ex){
+            setShowProgress(false)
            console.log(ex.response?.data);
             setErr_msg(ex.response?.data)
         }
@@ -58,7 +61,10 @@ const Login = ()=>{
                      />
                 </div>
                 <div className="form-group" style={{marginTop:'40px'}}>
-                   {response? <a href={`${response.shortUrl}`}>{response.shortUrl}</a>:''}
+                   {response? <div>
+                    <a href={`${response.shortUrl}`}>{response.shortUrl}</a>
+                    <div>Number of times visited: {response.clicks}</div>
+                   </div>:''}
                 </div>
                 <div className="form-group">
                    <button onClick={()=>handleSubmit()} className="btn btn-success btn-save-changes form-control ">

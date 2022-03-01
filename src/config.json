@@ -1,4 +1,4 @@
 {
-    "-apiUrl":"https://icopy-server.herokuapp.com/api",
-    "apiUrl":"http://localhost:4000"
+    "apiUrl":"https://damp-stream-12094.herokuapp.com/url",
+    "-apiUrl":"http://localhost:4000"
 }
