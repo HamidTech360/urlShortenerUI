@@ -47,7 +47,7 @@ const Login = ()=>{
             <div className="login-box">
                
                 <div className="setting-header  text-center" id="login-header">
-                    Admin Login
+                    URL SHORTENER
                 </div>
                 {err_msg?<div className="alert alert-danger">{err_msg}</div>:''}
                 <div className="form-group">
@@ -68,11 +68,9 @@ const Login = ()=>{
                 </div>
                 <div className="form-group">
                    <button onClick={()=>handleSubmit()} className="btn btn-success btn-save-changes form-control ">
-                       {showProgress?<CircularProgress size={20}/>:'Sign In'}
+                       {showProgress?<CircularProgress size={20}/>:'Shrink url'}
                     </button>
-                   <div className="back-to-home">
-                      <Link to="/" style={{color:'rgb(187, 44, 44)'}}> Back to home</Link>
-                   </div>
+                  
                 </div>
             </div>
         </div>
