@@ -6,40 +6,36 @@ import './css/login.css'
 import axios from 'axios';
 import { CircularProgress } from '@material-ui/core';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
-
+import 'bootstrap/dist/css/bootstrap.css'
+import 'font-awesome/css/font-awesome.css'
 
 
 
 const Login = ()=>{
     const history = useHistory()
     const [err_msg, setErr_msg]= useState(null)
+    const [response, setResponse]= useState(null)
     const [showProgress, setShowProgress]= useState(false)
     const [data, setData] = useState({
-        email:'',
-        regNo:''
+        originalUrl:''
     })
 
     const handleChange = (e)=>{
         const clone = {...data}
         clone[e.currentTarget.name] = e.currentTarget.value
         setData(clone)
-        // console.log(data);
+         console.log(data);
         
     }
     const handleSubmit = async ()=>{
         setShowProgress(true)
         try{
-            const response = await axios.post(`${apiUrl}/users/send_code`, data)
+            const response = await axios.post(`${apiUrl}/encode`, data)
              console.log(response.data);
-            // if(response.data.status==="success"){
-            //     localStorage.setItem('auth_token', response.data.token)
-            //     history.push('/admin')
-            // }
+            setResponse(response.data.data)
         }catch(ex){
-            // setErr_msg(ex.response?.data)
-            // console.log(ex.response?.data);
-            // setShowProgress(false)
-
+           console.log(ex.response?.data);
+            setErr_msg(ex.response?.data)
         }
         
     }
@@ -55,24 +51,17 @@ const Login = ()=>{
                     <input 
                         type="text" 
                         className="form-control login-inpt" 
-                        placeholder="Email"
-                        name="email"
+                        placeholder="originalUrl"
+                        name="originalUrl"
                         onChange={(e)=>handleChange(e)}
                         // value=""
                      />
                 </div>
-                <div className="form-group">
-                    <input 
-                        type="text" 
-                        className="form-control login-inpt" 
-                        placeholder="regNo"
-                        name="regNo"
-                        onChange={(e)=>handleChange(e)}
-                        // value=""
-                     />
+                <div className="form-group" style={{marginTop:'40px'}}>
+                   {response? <a href={`${response.shortUrl}`}>{response.shortUrl}</a>:''}
                 </div>
                 <div className="form-group">
-                   <button onClick={()=>handleSubmit()} className="btn btn-login btn-save-changes form-control ">
+                   <button onClick={()=>handleSubmit()} className="btn btn-success btn-save-changes form-control ">
                        {showProgress?<CircularProgress size={20}/>:'Sign In'}
                     </button>
                    <div className="back-to-home">
