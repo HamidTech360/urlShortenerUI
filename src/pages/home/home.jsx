@@ -11,7 +11,7 @@ import 'font-awesome/css/font-awesome.css'
 
 
 
-const Login = ()=>{
+const Home = ()=>{
     const history = useHistory()
     const [err_msg, setErr_msg]= useState(null)
     const [response, setResponse]= useState(null)
@@ -27,7 +27,7 @@ const Login = ()=>{
          console.log(data);
         
     }
-    const handleSubmit = async ()=>{
+     const handleSubmit = async ()=>{
         setShowProgress(true)
         try{
             const response = await axios.post(`${apiUrl}/encode`, data)
@@ -78,4 +78,4 @@ const Login = ()=>{
 }
 
 
-export default Login;
+export default Home;
